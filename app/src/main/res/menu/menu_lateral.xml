@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_servicos"
+            android:icon="@drawable/ic_configuracoes_black"
+            android:title="Serviços"
+            android:checked="true"
+            />
+        <item
+            android:id="@+id/nav_forum"
+            android:icon="@drawable/ic_forum_black"
+            android:title="Forum"
+            />
+        <item
+            android:id="@+id/nav_msg"
+            android:icon="@drawable/ic_chat_black"
+            android:title="Mensagens"
+            />
+        <item
+            android:id="@+id/nav_perfil"
+            android:icon="@drawable/ic_person_white_48dp"
+            android:title="Meu perfil"
+
+            />
+
+    </group>
+
+
+</menu>

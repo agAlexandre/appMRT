@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">MRT Oficina</string>
+    <string name="nome">$nome</string>
+    <string name="title_activity_tela_config">TelaConfigActivity</string>
+    <string name="title_activity_botoes_operacionais">$str</string>
+    <string name="nav_open">Abrir</string>
+    <string name="nav_close">Fechar</string>
+</resources>
