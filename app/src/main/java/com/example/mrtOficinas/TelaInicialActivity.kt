@@ -122,20 +122,31 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
 
         menu_lateral.setNavigationItemSelectedListener(this)
     }
+    private fun cadastrarCliente(){
+        var intent = Intent(this, TelaCadastroClienteActivity()::class.java)
+        startActivity(intent)
+    }
+    private fun mostrarEstoque(){
+        var intent = Intent(this, TelaEstoqueActivity()::class.java)
+        startActivity(intent)
+    }
+    private fun showServices(){
+        var intent = Intent(this, TelaServicosActivity()::class.java)
+        startActivity(intent)
+    }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId){
             R.id.nav_servicos ->{
-                Toast.makeText(this, "Clicou em Servicos", Toast.LENGTH_SHORT).show()
+                kotlin.run {showServices()}}
+            R.id.nav_estoque ->{
+                kotlin.run {mostrarEstoque()}
             }
-            R.id.nav_forum ->{
-                Toast.makeText(this, "Clicou em Fórum", Toast.LENGTH_SHORT).show()
+            R.id.nav_clients ->{
+                kotlin.run {cadastrarCliente()}
             }
-            R.id.nav_msg ->{
-                Toast.makeText(this, "Clicou em Mensagens", Toast.LENGTH_SHORT).show()
-            }
-            R.id.nav_perfil ->{
-                Toast.makeText(this, "Clicou em Meu Perfil", Toast.LENGTH_SHORT).show()
+            R.id.nav_sair ->{
+                cliqueSair()
             }
         }
         layoutMenuLateral.closeDrawer(GravityCompat.START)

@@ -3,24 +3,24 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_servicos"
-            android:icon="@drawable/ic_configuracoes_black"
+            android:icon="@drawable/ic_services"
             android:title="Serviços"
             android:checked="true"
             />
         <item
-            android:id="@+id/nav_forum"
-            android:icon="@drawable/ic_forum_black"
-            android:title="Forum"
+            android:id="@+id/nav_estoque"
+            android:icon="@drawable/ic_estoque"
+            android:title="Estoque"
             />
         <item
-            android:id="@+id/nav_msg"
-            android:icon="@drawable/ic_chat_black"
-            android:title="Mensagens"
+            android:id="@+id/nav_clients"
+            android:icon="@drawable/ic_clients"
+            android:title="Cadastrar Clientes"
             />
         <item
-            android:id="@+id/nav_perfil"
-            android:icon="@drawable/ic_person_white_48dp"
-            android:title="Meu perfil"
+            android:id="@+id/nav_sair"
+            android:icon="@drawable/ic_exit"
+            android:title="Sair"
 
             />
 
