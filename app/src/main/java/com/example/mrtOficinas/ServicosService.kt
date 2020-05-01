@@ -8,11 +8,11 @@ import com.google.gson.reflect.TypeToken
 import java.net.URL
 
 object ServicosService {
-    val host = "https://fesousa.pythonanywhere.com"
+    val host = "https://mrtoficinas.pythonanywhere.com"
     val TAG = "WS_MRTOficinas"
     fun getServicos(context: Context): List<Servicos>{
         if (AndroidUtils.isInternetDisponivel(context)){
-            val url ="$host/disciplinas"
+            val url ="$host/servicos"
             val json = HttpHelper.get(url)
 
             Log.d(TAG, json)
@@ -24,13 +24,13 @@ object ServicosService {
         }
     }
     fun save(servicos: Servicos): Response {
-        val json = HttpHelper.post("$host/disciplinas", servicos.toJson())
+        val json = HttpHelper.post("$host/servicos", servicos.toJson())
         return parserJson(json)
     }
 
     fun delete(servicos: Servicos): Response {
         Log.d(TAG, servicos.id.toString())
-        val url = "$host/disciplinas/${servicos.id}"
+        val url = "$host/servicos/${servicos.id}"
         val json = HttpHelper.delete(url)
         Log.d(TAG, json)
         return parserJson(json)

@@ -10,7 +10,7 @@ class TelaServicosActivity:DebugActivity() {
         setContentView(R.layout.activity_servicos)
         supportActionBar?.title = "Servicos"
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        text_servicos.setText("Servicos")
+        text_servicos.setText("Ordens de Servicos")
     }
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
 

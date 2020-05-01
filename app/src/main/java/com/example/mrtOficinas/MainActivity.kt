@@ -17,17 +17,16 @@ class MainActivity : DebugActivity() {
             val valor_senha = password.text.toString()
 
             val params = Bundle()
-            startActivity(intent)
             params.putString("nome", "$valor_usuario")
-/*
             intent.putExtras(params)
+
             if (valor_usuario == "aluno" && valor_senha == "impacta") {
                 startActivity(intent)
             }
 
             else {
                 Toast.makeText(this, "Usuário inválido ou senha incorreta, Por favor verificar!", Toast.LENGTH_LONG).show()
-            }*/
+            }
         }
 
 

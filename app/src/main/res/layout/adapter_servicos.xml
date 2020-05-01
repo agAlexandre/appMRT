@@ -44,12 +44,7 @@
                 android:layout_marginRight="6dp"
                 android:visibility="invisible"/>
 
-
         </FrameLayout>
-
-
-
-
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>

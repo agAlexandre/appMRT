@@ -6,6 +6,7 @@ import kotlinx.android.synthetic.main.activity_estoque.*
 
 
 class TelaEstoqueActivity:DebugActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_estoque)
@@ -22,4 +23,5 @@ class TelaEstoqueActivity:DebugActivity() {
         }
         return super.onOptionsItemSelected(item)
     }
+
 }

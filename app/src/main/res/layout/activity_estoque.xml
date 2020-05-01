@@ -12,4 +12,9 @@
         android:id="@+id/text_estoque"
         android:text="estoque"/>
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/estoque_prod"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
 </LinearLayout>

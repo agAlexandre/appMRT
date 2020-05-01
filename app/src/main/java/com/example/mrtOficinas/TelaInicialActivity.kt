@@ -105,7 +105,7 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
         val id = item?.itemId
 
         if (id == R.id.action_atualizar){
-            kotlin.run {showSettings()}
+            Toast.makeText(this, "Clicou em atualizar", Toast.LENGTH_LONG).show()
         } else if (id == R.id.action_config){
             kotlin.run {showSettings()}
         } else if (id == android.R.id.home){
