@@ -1,8 +1,11 @@
 package com.example.mrtOficinas
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.GsonBuilder
-
+@Entity(tableName= "servicos")
 class Servicos {
+    @PrimaryKey
     var id: Long =0
     var nome: String =""
     var descricao: String = ""
