@@ -50,14 +50,22 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
         this.servicos = ServicosService.getServicos(context)
             runOnUiThread {
                 recycler_servicos?.adapter = ServicosAdapter(servicos) { onClickServicos(it) }
-              }
+                enviaNotificacao(servicos.get(4))
+            }
         }.start()
     }
-    fun onClickServicos(servicos: Servicos){
-        Toast.makeText(context,"Clicou em ${servicos.nome}", Toast.LENGTH_LONG).show()
+
+    fun enviaNotificacao(servicos: Servicos){
+        val intent = Intent(this,Servicos::class.java)
+        intent.putExtra("servicos",servicos)
+        NotificationUtil.create(this,1,intent, "MRTApp","Você tem um novo serviço ${servicos.nome}")
     }
 
-
+    fun onClickServicos(servicos: Servicos){
+        Toast.makeText(context,"Clicou em ${servicos.nome}", Toast.LENGTH_LONG).show()
+        var intent = Intent(this, Servicos()::class.java)
+        startActivity(intent)
+    }
 
     private fun cliqueSair() {
         Toast.makeText(this, "Você saiu do App MRT Oficina", Toast.LENGTH_LONG).show()
@@ -71,7 +79,6 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
         intent.putExtras(params)
         startActivity(intent)
     }
-
 
     private fun showSettings(){
         var intent = Intent(this, TelaConfigActivity()::class.java)

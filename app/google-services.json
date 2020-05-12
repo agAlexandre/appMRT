@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "991267479976",
+    "firebase_url": "https://mrtoficinas.firebaseio.com",
+    "project_id": "mrtoficinas",
+    "storage_bucket": "mrtoficinas.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:991267479976:android:7b7421f0b5c95f6aa93d9d",
+        "android_client_info": {
+          "package_name": "com.example.mrtOficinas"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "991267479976-vf163a37mii1lo47h84fd5gotujd43qs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBAX_O00H72iYdYaBHW_2wrRcLwyLel6cc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "991267479976-vf163a37mii1lo47h84fd5gotujd43qs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
