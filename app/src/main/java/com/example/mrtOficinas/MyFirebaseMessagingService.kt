@@ -25,6 +25,11 @@ class MyFirebaseMessagingService: FirebaseMessagingService() {
             Log.d(TAG,"Título: $titulo")
             Log.d(TAG,"Corpo: $corpo")
 
+            if (mensagemRemota?.data.isNotEmpty()){
+                val servicoId = mensagemRemota.data.get("servicoId")
+                corpo = "$corpo ($servicoId)"
+            }
+
             val intent = Intent(this, TelaServicosActivity::class.java)
             NotificationUtil.create(this,1,intent,titulo!!,corpo!!)
         }
