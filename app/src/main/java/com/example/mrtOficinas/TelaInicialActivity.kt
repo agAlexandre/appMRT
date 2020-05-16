@@ -15,6 +15,7 @@ import androidx.appcompat.widget.SearchView
 import androidx.core.view.GravityCompat
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.gms.common.util.CollectionUtils.listOf
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_tela_inicial.*
 import kotlinx.android.synthetic.main.toolbar.*
@@ -50,7 +51,7 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
         this.servicos = ServicosService.getServicos(context)
             runOnUiThread {
                 recycler_servicos?.adapter = ServicosAdapter(servicos) { onClickServicos(it) }
-                enviaNotificacao(servicos.get(4))
+                enviaNotificacao(servicos.get(0))
             }
         }.start()
     }
@@ -120,8 +121,12 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
         val id = item?.itemId
 
         if (id == R.id.action_atualizar){
-            kotlin.run{taskServicos()}
-            Toast.makeText(this, "Serviços atualizados!", Toast.LENGTH_LONG).show()
+            if (AndroidUtils.isInternetDisponivel(context)){
+                kotlin.run{taskServicos()}
+                Toast.makeText(this, "Serviços atualizados!", Toast.LENGTH_LONG).show()
+            }else{
+                Toast.makeText(this, "Não é possível atualizar, sem conexão...", Toast.LENGTH_LONG).show()
+            }
         }/*#TODO FUNCIONALIDADE DE CONFIGURAÇÕES DO APP DESATIVADA
          else if (id == R.id.action_config){
         kotlin.run {showSettings()}
