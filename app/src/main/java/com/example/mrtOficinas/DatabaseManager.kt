@@ -17,4 +17,5 @@ object DatabaseManager {
     fun getServicoDAO():servicosDAO{
         return dbInstance.servicosDAO()
     }
+
 }

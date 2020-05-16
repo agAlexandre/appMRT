@@ -13,7 +13,7 @@
         android:text="Nome do cliente"/>
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/nome_cliente"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -26,7 +26,7 @@
         android:text="Telefone" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/telefone_cliente"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -39,7 +39,7 @@
         android:text="E-mail" />
 
     <EditText
-        android:id="@+id/editText4"
+        android:id="@+id/email_cliente"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -74,7 +74,7 @@
             android:text="Descrição" />
 
         <EditText
-            android:id="@+id/editText6"
+            android:id="@+id/desc_cliente"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -82,7 +82,7 @@
     </RadioGroup>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton2"
+        android:id="@+id/cadastrar_cliente"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"

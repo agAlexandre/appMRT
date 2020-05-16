@@ -8,8 +8,29 @@ class TelaServicosActivity:DebugActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_servicos)
-        supportActionBar?.title = "Nova ordem de serviço"
+        supportActionBar?.title = "Novo serviço"
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        novo_servico.setOnClickListener{
+            val servicos = Servicos()
+            servicos.nome=nome_servico.text.toString()
+            servicos.descricao=descricao_servico.text.toString()
+            servicos.valor= valor_servico.text.toString()
+            servicos.foto=foto_servico.text.toString()
+
+            taskAtualizar(servicos)
+
+        }
+    }
+
+    private fun taskAtualizar(servicos: Servicos) {
+        // Thread para salvar a discilpina
+        Thread {
+            ServicosService.save(servicos)
+            runOnUiThread {
+                finish()
+            }
+        }.start()
     }
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
 
@@ -20,4 +41,5 @@ class TelaServicosActivity:DebugActivity() {
         }
         return super.onOptionsItemSelected(item)
     }
+
 }

@@ -64,8 +64,6 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
 
     fun onClickServicos(servicos: Servicos){
         Toast.makeText(context,"Clicou em ${servicos.nome}", Toast.LENGTH_LONG).show()
-        var intent = Intent(this, Servicos()::class.java)
-        startActivity(intent)
     }
 
     private fun cliqueSair() {
@@ -127,12 +125,7 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
             }else{
                 Toast.makeText(this, "Não é possível atualizar, sem conexão...", Toast.LENGTH_LONG).show()
             }
-        }/*#TODO FUNCIONALIDADE DE CONFIGURAÇÕES DO APP DESATIVADA
-         else if (id == R.id.action_config){
-        kotlin.run {showSettings()}
-    } else if (id == android.R.id.home){
-        finish()
-    }*/
+        }
         return super.onOptionsItemSelected(item)
     }
 
