@@ -8,9 +8,8 @@ class TelaServicosActivity:DebugActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_servicos)
-        supportActionBar?.title = "Servicos"
+        supportActionBar?.title = "Nova ordem de serviço"
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        text_servicos.setText("Ordens de Servicos")
     }
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
 

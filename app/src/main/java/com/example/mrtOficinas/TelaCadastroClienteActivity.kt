@@ -12,7 +12,7 @@ class TelaCadastroClienteActivity: DebugActivity() {
         setContentView(activity_cadastro_cliente)
         supportActionBar?.title = "Cadastrar Cliente"
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        nome_cliente.setText("Cadastro de Clientes")
+
     }
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
 

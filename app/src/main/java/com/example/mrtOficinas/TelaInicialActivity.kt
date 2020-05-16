@@ -89,6 +89,14 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
 
         menuInflater.inflate(R.menu.menu_main, menu)
 
+        /* #TODO FUNCIONALIDADE DE PESQUISAR DESATIVADA
+        CODE DO MENU MAIN ICON:
+        <item android:id="@+id/action_buscar"
+        android:title="Buscar"
+        app:showAsAction="always"
+        app:actionViewClass="androidx.appcompat.widget.SearchView"
+        android:icon="@drawable/ic_buscar_white"
+        />
         (menu?.findItem(R.id.action_buscar)?.actionView as SearchView?)?.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
 
             override fun onQueryTextChange(newText: String): Boolean {
@@ -102,7 +110,7 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
                 return false
             }
 
-        })
+        }*/
         return true
     }
 
@@ -112,12 +120,14 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
         val id = item?.itemId
 
         if (id == R.id.action_atualizar){
-            Toast.makeText(this, "Clicou em atualizar", Toast.LENGTH_LONG).show()
-        } else if (id == R.id.action_config){
-            kotlin.run {showSettings()}
-        } else if (id == android.R.id.home){
-            finish()
-        }
+            kotlin.run{taskServicos()}
+            Toast.makeText(this, "Serviços atualizados!", Toast.LENGTH_LONG).show()
+        }/*#TODO FUNCIONALIDADE DE CONFIGURAÇÕES DO APP DESATIVADA
+         else if (id == R.id.action_config){
+        kotlin.run {showSettings()}
+    } else if (id == android.R.id.home){
+        finish()
+    }*/
         return super.onOptionsItemSelected(item)
     }
 

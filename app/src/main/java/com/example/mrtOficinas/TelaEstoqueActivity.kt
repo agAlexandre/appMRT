@@ -10,9 +10,9 @@ class TelaEstoqueActivity:DebugActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_estoque)
-        supportActionBar?.title = "Estoque"
+        supportActionBar?.title = "Novo produto"
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        text_estoque.setText("Estoque")
+
     }
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
 

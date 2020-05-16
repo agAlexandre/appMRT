@@ -30,7 +30,7 @@ class MyFirebaseMessagingService: FirebaseMessagingService() {
                 corpo = "$corpo ($servicoId)"
             }
 
-            val intent = Intent(this, TelaServicosActivity::class.java)
+            val intent = Intent(this, TelaInicialActivity::class.java)
             NotificationUtil.create(this,1,intent,titulo!!,corpo!!)
         }
     }
