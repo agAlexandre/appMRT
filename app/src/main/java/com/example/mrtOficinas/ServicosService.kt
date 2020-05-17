@@ -11,23 +11,47 @@ import java.net.URL
 object ServicosService {
     val host = "https://mrtoficinas.pythonanywhere.com"
     val TAG = "WS_MRTOficinas"
+
     fun getServicos(context: Context): List<Servicos>{
+        var servicos = ArrayList<Servicos>()
         if (AndroidUtils.isInternetDisponivel(context)){
             val url ="$host/servicos"
             val json = HttpHelper.get(url)
-            var servicos = parserJson<List<Servicos>>(json)
+            servicos = parserJson(json)
 
             for (d in servicos){
                 saveOffline(d)
             }
             return servicos
-            Log.d(TAG, json)
-
-            return parserJson<List<Servicos>>(json)
-        }
-        else{
+        } else{
             var dao = DatabaseManager.getServicoDAO()
-            return dao.findAll()
+            val servicos:List<Servicos> = dao.findAll()
+            return servicos
+        }
+    }
+
+    fun getServicos(context: Context,id:Long): Servicos?{
+        if (AndroidUtils.isInternetDisponivel(context)) {
+            val url = "$host/servicos/${id}"
+            val json = HttpHelper.get(url)
+            val servicos = parserJson<Servicos>(json)
+
+            return servicos
+        } else {
+            val dao = DatabaseManager.getServicoDAO()
+            val servicos = dao.getById(id)
+            return servicos
+        }
+
+    }
+    fun save(context: Context,servicos: Servicos): Response {
+        if (AndroidUtils.isInternetDisponivel(context)) {
+            val json = HttpHelper.post("$host/servicos", servicos.toJson())
+            return parserJson(json)
+        }
+        else {
+            saveOffline(servicos)
+            return Response("OK", "Serviço salvo no dispositivo")
         }
     }
     fun saveOffline(servicos: Servicos): Boolean{
@@ -49,17 +73,21 @@ object ServicosService {
         return parserJson(json)
     }
 
-    fun delete(servicos: Servicos): Response {
-        Log.d(TAG, servicos.id.toString())
-        val url = "$host/servicos/${servicos.id}"
-        val json = HttpHelper.delete(url)
-        Log.d(TAG, json)
-        return parserJson(json)
+    fun delete(context: Context,servicos: Servicos): Response {
+        if (AndroidUtils.isInternetDisponivel(context)) {
+            val url = "$host/servicos/${servicos.id}"
+            val json = HttpHelper.delete(url)
+
+            return parserJson(json)
+        } else {
+            val dao = DatabaseManager.getServicoDAO()
+            dao.delete(servicos)
+            return Response(status = "OK", msg = "Dados salvos localmente")
+        }
     }
 
-    inline fun <reified T> parserJson(json: String): T {
-        val type = object : TypeToken<T>(){}.type
-        return Gson().fromJson<T>(json, type)
-
-    }
+        inline fun <reified T> parserJson(json: String): T {
+            val type = object : TypeToken<T>(){}.type
+            return Gson().fromJson<T>(json, type)
+        }
 }

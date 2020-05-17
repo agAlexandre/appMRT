@@ -17,4 +17,9 @@ object DatabaseManager {
     fun getServicoDAO():servicosDAO{
         return dbInstance.servicosDAO()
     }
+
+    fun getLoginDAO():loginDAO{
+        return dbInstance.loginDAO()
+    }
+
 }

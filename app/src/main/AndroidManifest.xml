@@ -21,6 +21,8 @@
         <activity android:name=".DebugActivity" />
         <activity android:name=".TelaServicosActivity"/>
         <activity android:name=".TelaEstoqueActivity"/>
+        <activity android:name=".Login"/>
+        <activity android:name=".LoginService"/>
         <activity android:name=".TelaCadastroClienteActivity"/>
         <activity android:name=".MainActivity">
             <intent-filter>

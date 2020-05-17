@@ -15,6 +15,7 @@ import androidx.appcompat.widget.SearchView
 import androidx.core.view.GravityCompat
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.gms.common.util.CollectionUtils.listOf
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_tela_inicial.*
 import kotlinx.android.synthetic.main.toolbar.*
@@ -45,12 +46,13 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
         super.onResume()
         taskServicos()
     }
+
     fun taskServicos(){
         Thread{
         this.servicos = ServicosService.getServicos(context)
             runOnUiThread {
                 recycler_servicos?.adapter = ServicosAdapter(servicos) { onClickServicos(it) }
-                enviaNotificacao(servicos.get(4))
+                enviaNotificacao(servicos.get(0))
             }
         }.start()
     }
@@ -63,8 +65,6 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
 
     fun onClickServicos(servicos: Servicos){
         Toast.makeText(context,"Clicou em ${servicos.nome}", Toast.LENGTH_LONG).show()
-        var intent = Intent(this, Servicos()::class.java)
-        startActivity(intent)
     }
 
     private fun cliqueSair() {
@@ -88,21 +88,6 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
 
         menuInflater.inflate(R.menu.menu_main, menu)
-
-        (menu?.findItem(R.id.action_buscar)?.actionView as SearchView?)?.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-
-            override fun onQueryTextChange(newText: String): Boolean {
-                if (newText.length > 0) {
-                    Toast.makeText(applicationContext, newText, Toast.LENGTH_SHORT).show()
-                }
-                return false
-            }
-            override fun onQueryTextSubmit(query: String): Boolean {
-                Toast.makeText(applicationContext, query, Toast.LENGTH_SHORT).show()
-                return false
-            }
-
-        })
         return true
     }
 
@@ -112,11 +97,13 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
         val id = item?.itemId
 
         if (id == R.id.action_atualizar){
-            Toast.makeText(this, "Clicou em atualizar", Toast.LENGTH_LONG).show()
-        } else if (id == R.id.action_config){
-            kotlin.run {showSettings()}
-        } else if (id == android.R.id.home){
-            finish()
+            if (AndroidUtils.isInternetDisponivel(context)){
+                kotlin.run{taskServicos()}
+                Toast.makeText(this, "Serviços atualizados!", Toast.LENGTH_LONG).show()
+            }
+            else{
+                Toast.makeText(this, "Não é possível atualizar, sem conexão...", Toast.LENGTH_LONG).show()
+            }
         }
         return super.onOptionsItemSelected(item)
     }
@@ -129,14 +116,17 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
 
         menu_lateral.setNavigationItemSelectedListener(this)
     }
+
     private fun cadastrarCliente(){
         var intent = Intent(this, TelaCadastroClienteActivity()::class.java)
         startActivity(intent)
     }
+
     private fun mostrarEstoque(){
         var intent = Intent(this, TelaEstoqueActivity()::class.java)
         startActivity(intent)
     }
+
     private fun showServices(){
         var intent = Intent(this, TelaServicosActivity()::class.java)
         startActivity(intent)
